@@ -1,5 +1,9 @@
 self.GLOBAL_CONFIG = {
-	baseUrl : '/touch_v2/source/',
+	baseUrl : (function() {
+		var loc = location.href;
+		var idx = loc.indexOf('/KitJs-v2');
+		return loc.substring(0, idx) + '/KitJs-v2/source/';
+	})(),
 	version : 2013122301,
 	workerVersion : 2013122301,
 	cacheCanUse : false,

@@ -1,0 +1,2157 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<script src="../../../source/require.js?v=2013122302" defer="defer"></script>
+<script src="../../../source/config.js?v=2013122302" defer="defer"></script>
+<script src="../../../source/common.js?v=2013122302" defer="defer"></script>
+<script
+	src="../../../source/controller/testcase/c_fourDirection.js?v=2014012002"
+	defer="defer"></script>
+
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="http://img1.icson.com" />
+<link rel="dns-prefetch" href="http://static.gtimg.com" />
+
+<title>四方向滑动测试用例</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" type="text/css"
+	href="http://static.gtimg.com/icson/css/wx/common/gb.css?v=2013122301" />
+<style>
+body {
+	background: #fff
+}
+
+.btn_buy_fixed {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	font-size: 18px
+}
+
+.ic_container {
+	overflow-x: hidden
+}
+
+.detail_section {
+	width: 100%;
+	box-sizing: border-box;
+	overflow: hidden
+}
+
+.detail_section_item {
+	border-top: 1px solid #c5c5c5;
+	padding: 15px 0
+}
+
+.detail_section_item:first-child {
+	border-top: 0 none
+}
+
+.detail_section_item_tit {
+	font-size: 16px;
+	margin-bottom: 15px;
+	padding: 0 15px
+}
+
+.goods {
+	padding: 0 15px
+}
+
+.goods>* {
+	margin-bottom: 10px
+}
+
+.goods>*:last-child {
+	margin-bottom: 0
+}
+
+.goods_img {
+	margin-bottom: 15px
+}
+
+.goods_img img {
+	display: block;
+	margin: auto
+}
+
+.goods_name {
+	line-height: 20px;
+	max-height: 40px;
+	overflow: hidden
+}
+
+.goods_attr {
+	overflow: hidden
+}
+
+.goods_attr_tit,.goods_attr_con {
+	display: inline-block
+}
+
+.goods_attr_tit {
+	margin-right: 5px
+}
+
+.goods_prcie {
+	overflow: hidden
+}
+
+.goods_prcie_tit {
+	float: left;
+	display: inline;
+	margin: 6px 10px 0 0;
+	color: #666;
+	font-weight: bold;
+	width: 4em
+}
+
+.goods_price_val {
+	font-size: 24px;
+	color: #c73d00;
+	font-weight: bold;
+	float: left
+}
+
+.goods_sku_row {
+	overflow: hidden
+}
+
+.goods_sku_tit {
+	float: left;
+	line-height: 36px;
+	width: 4em;
+	margin-right: 10px;
+	color: #666;
+	overflow: hidden;
+	height: 36px;
+	word-break: break-all
+}
+
+.goods_sku_list {
+	overflow: hidden
+}
+
+.goods_sku_option {
+	float: left;
+	position: relative;
+	height: 34px;
+	border: 1px solid #ddd;
+	line-height: 34px;
+	text-align: center;
+	min-width: 2em;
+	max-width: 8em;
+	overflow: hidden;
+	padding: 0 10px;
+	border-radius: 4px;
+	background: #fff;
+	margin: 0 10px 10px 0;
+	word-break: break-all
+}
+
+.goods_sku_option_selected {
+	border-color: #3985ff
+}
+
+.goods_sku_option_selected:after {
+	content: '';
+	display: block;
+	width: 11px;
+	height: 11px;
+	overflow: hidden;
+	background-image:
+		url(//static.gtimg.com/icson/img/wx/detail/ico_selected.png);
+	background-repeat: no-repeat;
+	background-size: 11px;
+	position: absolute;
+	bottom: -1px;
+	right: -1px
+}
+
+.goods_sku_option_disabled {
+	color: #ddd;
+	border-color: #ddd;
+	border-style: dashed
+}
+
+.goods_sku_option img {
+	vertical-align: middle;
+	margin: -3px 5px 0 0
+}
+
+.goods .btn_buy,.goods .btn_ask {
+	font-size: 18px;
+	display: block;
+	width: 200px;
+	margin: 0 auto 10px
+}
+
+.goods .btn_ask {
+	margin-bottom: 0
+}
+
+.gallery {
+	position: absolute;
+	top: 10px;
+	width: 100%;
+	display: none;
+	z-index: 1000;
+	padding: 10px 0;
+	background: #fff;
+	min-width: 320px;
+	max-width: 1024px
+}
+
+.gallery img {
+	display: block;
+	margin: 0 auto
+}
+
+.gallery_wrap {
+	overflow: hidden;
+	width: 100%;
+	height: 300px
+}
+
+.gallery_list {
+	width: 100%
+}
+
+.gallery_list li {
+	float: left;
+	height: 300px;
+	display: inline;
+	width: 100%
+}
+
+.gallery_status {
+	position: absolute;
+	bottom: 15px;
+	text-align: center;
+	width: 100%
+}
+
+.gallery_status i {
+	display: inline-block;
+	margin: 0 5px;
+	width: 8px;
+	height: 8px;
+	border-radius: 10px;
+	background: #fff;
+	border: 1px solid #ccc
+}
+
+.gallery_status .current {
+	background: #00a0e9
+}
+
+.info {
+	padding: 0 15px
+}
+
+.mod_detail_info {
+	margin-bottom: 15px;
+	color: #666
+}
+
+.mod_detail_info:last-child {
+	margin-bottom: 0
+}
+
+.mod_detail_info .mod_hd {
+	margin-bottom: 5px;
+	font-size: 12px
+}
+
+.mod_detail_info .mod_hd h3 {
+	font-weight: normal
+}
+
+.mod_detail_info .mod_hd .tit {
+	color: #444;
+	margin-right: 5px;
+	font-size: 16px;
+	font-weight: bold
+}
+
+.mod_detail_info .mod_bd {
+	line-height: 20px;
+	font-size: 12px
+}
+
+.mod_detail_info>* {
+	margin-bottom: 5px
+}
+
+.mod_detail_info>*:last-child {
+	margin-bottom: 0
+}
+
+.mod_detail_info img {
+	max-width: 100%;
+	height: auto !important;
+	display: block;
+	margin: auto
+}
+
+.mod_detail_info table {
+	width: 100%
+}
+
+.comment {
+	padding: 15px 0
+}
+
+.detail_section_item .comment {
+	padding: 0
+}
+
+.comment_top {
+	padding: 0 15px 10px;
+	overflow: hidden;
+	line-height: 20px;
+	height: 22px
+}
+
+.comment_total {
+	float: right;
+	color: #999;
+	margin-top: 2px
+}
+
+.comment_grade {
+	float: left
+}
+
+.comment_grade_score span {
+	color: #fe8a03;
+	font-size: 20px;
+	font-weight: bold;
+	margin-right: 3px;
+	position: relative;
+	top: 2px
+}
+
+.comment_grade_tag {
+	height: 18px;
+	display: inline-block;
+	background: #fe8a03;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 12px;
+	line-height: 18px;
+	vertical-align: middle;
+	margin-top: -4px;
+	padding: 0 5px
+}
+
+.comment_list {
+	border-top: 1px solid #ddd
+}
+
+.comment_item {
+	padding: 10px 15px;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #ddd;
+	word-break: break-all
+}
+
+.comment_item:last-child {
+	border-bottom: none
+}
+
+.comment_item p {
+	line-height: 20px
+}
+
+.comment_item_ft {
+	color: #a2a2a2;
+	margin-top: 5px;
+	overflow: hidden
+}
+
+.comment_user {
+	float: left
+}
+
+.comment_date {
+	float: right
+}
+
+.comment_loading {
+	text-align: center;
+	padding: 10px
+}
+
+.comment_loading img {
+	vertical-align: middle;
+	margin-right: 10px
+}
+
+.comment_loaded {
+	height: 30px;
+	line-height: 30px;
+	color: #999;
+	text-align: center
+}
+
+.param {
+	padding: 0 15px
+}
+
+.param_item {
+	margin-bottom: 10px
+}
+
+.param_item:last-child {
+	margin-bottom: 0
+}
+
+.param_table {
+	width: 100%;
+	margin-bottom: 10px;
+	border-collapse: collapse;
+	font-size: 12px;
+	border-spacing: 0;
+	line-height: 18px
+}
+
+.param_table th,.param_table td {
+	padding: 8px;
+	border: 1px solid #dadada;
+	text-align: left
+}
+
+.param_table td:first-child {
+	width: 72px
+}
+
+.param_table td:last-child {
+	word-break: break-all
+}
+
+.param_tit {
+	background: #dedede;
+	font-weight: normal;
+	font-size: 14px
+}
+
+#CssGaga {
+	content: "131224144704,ade,300"
+}
+
+.J_loadingIcon {
+	display: inline-block;
+	width: 32px;
+	vertical-align: middle;
+	height: 32px;
+	background-image:
+		url(//static.gtimg.com/icson/img/wx/common/loading.gif)
+}
+
+.J_ScanOrientation {
+	display: none
+}
+
+@media screen and (orientation:landscape) {
+	.J_ScanOrientation {
+		text-align: left;
+		text-align: left !important
+	}
+}
+
+@media screen and (orientation:portrait) {
+	.J_ScanOrientation {
+		text-align: right;
+		text-align: right !important
+	}
+}
+
+.J_hidden {
+	display: none
+}
+
+.J_loadingEnd {
+	display: none
+}
+
+.J_view_loading {
+	height: 300px;
+	width: 100%;
+	text-align: center
+}
+
+.v-middle {
+	display: inline;
+	width: 0;
+	height: 100%;
+	vertical-align: middle
+}
+
+.h-center {
+	display: inline;
+	text-align: center
+}
+
+.y_dt {
+	z-index: 200;
+	position: fixed;
+	top: 44px;
+	left: 0;
+	display: table;
+	width: 100%;
+	height: 100%;
+	background-color: #aaa
+}
+
+.y_dt .inner {
+	display: table-cell;
+	vertical-align: middle
+}
+
+.y_dt {
+	z-index: 200;
+	top: 0;
+	background-color: transparent
+}
+
+.y_dt dl,.y_dt_txtone .txt {
+	width: 220px;
+	margin: 0 auto;
+	padding: 15px 25px 25px 25px;
+	background-color: rgba(0, 0, 0, .75);
+	border-radius: 8px
+}
+
+.y_dt dt {
+	padding: 7px 0 22px 0;
+	color: #fff;
+	font-size: 1.07142em;
+	word-break: break-all;
+	word-wrap: break-word
+}
+
+.y_dt dd {
+	height: 38px;
+	text-align: center
+}
+
+.y_dt a {
+	display: inline-block;
+	width: 103px;
+	height: 38px;
+	line-height: 35px;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 1.07142em
+}
+
+.y_dt .btn_normal {
+	float: left;
+	color: #000;
+	background: #d1d1d1;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff),
+		to(#d1d1d1));
+	background: -webkit-linear-gradient(top, #fff, #d1d1d1);
+	background: -moz-linear-gradient(top, #fff, #d1d1d1);
+	background: -ms-linear-gradient(top, #fff, #d1d1d1);
+	background: -o-linear-gradient(top, #fff, #d1d1d1);
+	text-shadow: 0 1px 0 #F5F5F5;
+	box-shadow: 0 -1px 1px #979797 inset
+}
+
+.y_dt .btn_normal_big {
+	float: none;
+	width: 130px
+}
+
+.y_dt .btn_strong {
+	height: 37px;
+	float: right;
+	color: #fff;
+	font-weight: bolder;
+	border-top: 1px #FFAE4F solid;
+	background: #d1d1d1;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FF8B04),
+		to(#E67701));
+	background: -webkit-linear-gradient(top, #FF8B04, #E67701);
+	background: -moz-linear-gradient(top, #FF8B04, #E67701);
+	background: -ms-linear-gradient(top, #FF8B04, #E67701);
+	background: -o-linear-gradient(top, #FF8B04, #E67701);
+	text-shadow: 0 -1px 0 #C16801;
+	box-shadow: 0 -1px 1px #9C5101 inset
+}
+
+.y_dt_txtone .txt {
+	overflow: hidden;
+	max-width: 280px;
+	width: auto;
+	height: 80px;
+	padding: 0 15px;
+	line-height: 80px;
+	color: #fff;
+	text-align: center;
+	font-size: 1.07142em
+}
+
+#CssGaga {
+	content: "131225155419,ade,304"
+}
+
+.ic_container {
+	height: 600px;
+	position: relative;
+	-webkit-user-select: none;
+	user-select: none;
+	overflow: hidden
+}
+
+.J_tabNav {
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+}
+
+.detail .detail_section {
+	position: absolute;
+	overflow: hidden
+}
+
+.detail .detail_section:nth-of-type(1) {
+	left: 0
+}
+
+.detail .detail_section:nth-of-type(2) {
+	left: 100%;
+	display: none
+}
+
+.detail .detail_section:nth-of-type(3) {
+	left: 200%;
+	display: none
+}
+
+.detail .detail_section:nth-of-type(4) {
+	left: 100%
+}
+
+.J_view_productDetail {
+	position: relative
+}
+
+.J_view_productModel table,.J_view_productDetail table {
+	width: 100%
+}
+
+.J_view_productDetail img {
+	max-width: 300px !important;
+	height: auto !important
+}
+
+.J_fakeScrollBar {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 5px
+}
+
+.J_fakeScrollBar .J_moveBar {
+	position: absolute;
+	width: 100%;
+	background-color: #ccc;
+	border-radius: 5px
+}
+
+.J_view_productInfo .J_view_productModel .J_view_loading,.J_view_productInfo .J_view_productDetail .J_view_loading,.J_view_productInfo .J_view_productComment .J_view_loading
+	{
+	height: 50px
+}
+
+.photo_gallery {
+	background-color: #fff;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	-webkit-user-select: none;
+	user-select: none
+}
+
+.photo_gallery .scroll_wrapper {
+	height: 100%;
+	width: 100%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	text-align: center
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(1) {
+	left: 0
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(2) {
+	left: 100%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(3) {
+	left: 200%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(4) {
+	left: 300%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(5) {
+	left: 400%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(6) {
+	left: 500%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(7) {
+	left: 600%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(8) {
+	left: 700%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(9) {
+	left: 800%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(10) {
+	left: 900%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(11) {
+	left: 1000%
+}
+
+.photo_gallery .scroll_wrapper .scroll_item:nth-of-type(12) {
+	left: 1100%
+}
+
+.photo_gallery .J_showNo {
+	position: absolute;
+	top: 2px;
+	display: inline-block;
+	left: 0;
+	z-index: 9900;
+	text-align: left;
+	padding-left: 10px
+}
+
+#CssGaga {
+	content: "131225153521,ade,304"
+}
+
+.J_scrollY {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateY(0);
+}
+
+img {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	/*
+		  Introduced in IE 10.
+		  See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+		*/
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.photo_gallery:after {
+	content: '';
+	height: 60px;
+	width: 60px;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-image: url(close.png);
+}
+
+#J_pleaseWait {
+	display: none;
+	line-height: 30px;
+	text-align: center;
+	position: fixed;
+	height: 30px;
+	width: 150px;
+	top: 50%;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -75px;
+	background: #1a8ed4;
+	border-radius: 30px;
+	color: #fff;
+}
+</style>
+</head>
+<body>
+	<div>
+		<div class="mod_bar mod_bar_fixed" style="position: absolute">
+			<div class="mod_bar_back">
+				<a href="#" class="J_backUrl J_ytag" ytag="19999"><i></i></a>
+			</div>
+			<div class="mod_bar_center">
+				<ul class="mod_bar_tab J_tabNav">
+					<li class="J_ytag current" ytag="11000"><span>商品</span></li>
+					<li class="J_ytag " ytag="11001"><span>评价</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="ic_container J_scrollWrapper">
+			<div class="detail J_scrollX"
+				style="-webkit-transform: translateX(0px);">
+				<script>
+					if (location.hash == '#comment') {
+						document.querySelector('.J_scrollX').style['-webkit-transform'] = 'translateX(-' + document.documentElement.clientWidth + 'px)'
+					}
+				</script>
+				<div class="detail_section J_scrollY J_magnetBed_view_productInfo"
+					style="-webkit-transform: translateY(-8155px);">
+					<div class="J_view_productInfo detail_section_item" style="">
+						<div class="J_view_loading" style="display: none;">
+							<img class="v-middle">
+							<div class="h-center">
+								<span class="J_loadingIcon"></span>
+							</div>
+						</div>
+						<div class="J_badNetwork" style="display: none; padding: 20px;">
+							<a href="">看起来您的网络质量有点不好呢，点我刷新一下吧...</a>
+						</div>
+						<div class="J_loadingEnd" style="display: block;">
+							<div class="goods">
+								<div class="goods_img J_photoGallery J_ytag" ytag="20001">
+									<img
+										src="http://img1.wgimg.com/qqbuy/2625555009/item-0000000000000000000000679C7ECA41.0.gif/300?5301B6C3"
+										onerror="this.src='http://img2.icson.com/product/mm/101/001/101-001-04992.jpg'"
+										width="160" height="160" alt="商品名称">
+								</div>
+								<div class="goods_name">Lenovo 联想 Y485p-AEI 14英寸笔记本电脑
+									A8-4500M/4GB/500GB/HD7640G+HD8790 2G DDR5双卡交火/超级DVD刻录/ HD
+									720p高清摄像头/Linux</div>
+								<div class="goods_prcie">
+									<span class="goods_prcie_tit">微信价</span> <span
+										class="J_weixinPriceLoading"
+										style="line-height: 25px; display: none;">正在加载中...</span> <span
+										class="goods_price_val J_weixinPriceWrapper">¥<span
+										class="J_weixinPrice">3899</span></span>
+								</div>
+								<div class="goods_sku">
+									<script type="x-template" class="J_template" main-thread="true">
+				{% 
+				for(var p=0;p < all_attr_block.length; p++){
+				%}
+				<div class="goods_sku_row">
+					<div class="goods_sku_tit">{%=all_attr_block[p].name%}</div>
+					<div class="goods_sku_list">
+						{% for(var j=0;j < all_attr_block[p].list.length;j++){ %}
+							{% if(all_attr_block[p].list[j].selected=='1'){ %}
+						<span class="goods_sku_option goods_sku_option_selected J_ytag" ytag="{%=(21100 + (p*100))%}">{%=all_attr_block[p].list[j].name%}</span>
+							{% }else if(all_attr_block[p].list[j].selected=='-1'){ %}
+								{% if(p==0){ %}
+						<a class="goods_sku_option J_anotherItem J_ytag" ytag="{%=(21100 + (p*100))%}" data-pid="{%=all_attr_block[p].list[j].product_id%}">{%=all_attr_block[p].list[j].name%}</a>
+								{% }else{ %}
+						<span class="goods_sku_option goods_sku_option_disabled J_ytag" ytag="{%=(21100 + (p*100))%}">{%=all_attr_block[p].list[j].name%}</span>
+								{% } %}
+							{% }else{ %}
+						<a class="goods_sku_option J_anotherItem J_ytag" ytag="{%=(21100 + (p*100))%}" data-pid="{%=all_attr_block[p].list[j].product_id%}">{%=all_attr_block[p].list[j].name%}</a>
+							{% } %}
+						{% } %}
+					</div>
+				</div>
+				{% } %}
+				</script>
+								</div>
+								<a href="http://w.yixun.com/b?P=1454975&amp;backurl="
+									class="mod_btn mod_btn_block mod_btn_bg btn_buy J_ytag"
+									ytag="20004">立即购买</a>
+								<!-- <a href="#" class="mod_btn mod_btn_block mod_btn_bg3 btn_ask">找好友给我买</a> -->
+								<input type="hidden" class="J_productSharePic"
+									value="http://img2.icson.com/product/small/101/001/101-001-04992.jpg">
+								<textarea style="display: none" class="J_viewData">{"bizObj":{"pid":"1454975","district":"1675","provinceid":"1591","channelId":0,"siteid":null,"uid":"400011279","wxsg":"1","wechatpp":"2","discount":"0","rvwstat":"0","gift":"0","coupon":"0","tf":"0","allattr":"1","nocs":"1","all_attr_block":[],"browse_products":[],"browser_path":{"c1_id":"1005","c1_name":"电脑、配件、网络","c2_id":"63","c2_name":"电脑整机","c3_id":"234","c3_name":"笔记本电脑"},"buy_products":[],"canUseCoupon":true,"canVAT":true,"cooper_full_name":"上海易迅电子商务发展有限公司","coupons":[],"fullDistrict":{"1591":{"city":{"1674":{"district":{"1675":{"id":1675,"name":"天宁区"}},"id":1674,"name":"常州市"}},"id":1591,"ip_id":32,"name":"江苏省"}},"gifts":[],"isCustomPhone":false,"isGJP":true,"isJGBH":true,"is_home_install":"0","is_qiang":"0","lowest_num":1,"mainpic":"http://img1.wgimg.com/qqbuy/2625555009/item-0000000000000000000000679C7ECA41.0.gif/300?5301B6C3","market_price":529900,"name":"Lenovo 联想 Y485p-AEI 14英寸笔记本电脑  A8-4500M/4GB/500GB/HD7640G+HD8790 2G DDR5双卡交火/超级DVD刻录/ HD 720p高清摄像头/Linux","nonsense":"0","num_limit":0,"pic_num":8,"price_info":{"discount_info":[],"icson_price":{"price":409900,"state":"1","vip_price":0,"vip_type":"0"},"promote_price":{"end_time":"1393568508","name":"团购价","notice_time":"0","now_time":1393490591,"price":389900,"price_type":"3","start_time":"1393309308","state":"0"}},"product_char_id":"101-001-04992","product_id":1454975,"product_sale_model":0,"promotion_word":"炫酷A面 双显卡交火 鲁大师跑分5W+ 超值学生款 你得来一发 Wower赶紧的","recommend_products":[],"restricted_trans_type":"","review":{},"sale_type":1,"shipping_cod":"0","skuID":"445007186497","status":0,"stock":"有货，可当日出库","tuaning":0,"weixin_price":389900}}</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="J_magnetStop detail_section_item" style="">
+						<h2 class="detail_section_item_tit">参数</h2>
+						<div class="J_view_productModel J_magnetBlock"
+							data-magnetbed=".J_magnetBed_view_productModel" style="">
+							<div class="J_view_loading" style="display: none;">
+								<img class="v-middle">
+								<div class="h-center">
+									<span class="J_loadingIcon"></span>
+								</div>
+							</div>
+							<div class="J_badNetwork" style="display: none; padding: 20px;">
+								<a href="">看起来您的网络质量有点不好呢，点我刷新一下吧...</a>
+							</div>
+							<div class="J_loadingEnd" style="display: block;">
+								<div class="param">
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">基本参数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>产品定位</td>
+													<td>游戏影音本</td>
+												</tr>
+												<tr>
+													<td>品牌</td>
+													<td>Lenovo/联想</td>
+												</tr>
+												<tr>
+													<td>型号</td>
+													<td>Y485p-AEI</td>
+												</tr>
+												<tr>
+													<td>颜色</td>
+													<td>棕色</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">操作系统</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>操作系统</td>
+													<td>Linux</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">处理器</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>CPU型号描述</td>
+													<td>AMD Trinity APU A8-4500M</td>
+												</tr>
+												<tr>
+													<td>CPU核心数</td>
+													<td>四核</td>
+												</tr>
+												<tr>
+													<td>CPU系列</td>
+													<td>APU A8</td>
+												</tr>
+												<tr>
+													<td>CPU频率</td>
+													<td>1.9GHz</td>
+												</tr>
+												<tr>
+													<td>缓存级别</td>
+													<td>二级缓存</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">存储参数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>内存容量</td>
+													<td>4G</td>
+												</tr>
+												<tr>
+													<td>内存类型</td>
+													<td>DDR III</td>
+												</tr>
+												<tr>
+													<td>固态硬盘</td>
+													<td>无</td>
+												</tr>
+												<tr>
+													<td>存储类型</td>
+													<td>笔记本硬盘</td>
+												</tr>
+												<tr>
+													<td>最大支持内存容量</td>
+													<td>8GB</td>
+												</tr>
+												<tr>
+													<td>硬盘容量</td>
+													<td>500G</td>
+												</tr>
+												<tr>
+													<td>硬盘接口</td>
+													<td>SATA</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">显卡信息</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>显卡类型</td>
+													<td>双显卡</td>
+												</tr>
+												<tr>
+													<td>显存容量</td>
+													<td>2G</td>
+												</tr>
+												<tr>
+													<td>显示芯片描述</td>
+													<td>HD8650+HD8790</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">光驱信息</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>光驱类型</td>
+													<td>DVD-RW刻录机</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">显示器参数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>屏幕尺寸</td>
+													<td>14英寸</td>
+												</tr>
+												<tr>
+													<td>屏幕比例</td>
+													<td>宽屏16:9</td>
+												</tr>
+												<tr>
+													<td>最高分辨率</td>
+													<td>1366*768</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">高级功能</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>高级功能</td>
+													<td>摄像头</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">通信参数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>无线网卡</td>
+													<td>802.11 b/g/n</td>
+												</tr>
+												<tr>
+													<td>蓝牙描述</td>
+													<td>支持蓝牙</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">端口参数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>USB接口</td>
+													<td>*USB2.0+3*USB3.0（其中一个e-SATA共用接口）</td>
+												</tr>
+												<tr>
+													<td>支持接口类型</td>
+													<td>USB 2.0</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">其他参数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>上市时间</td>
+													<td>2013年</td>
+												</tr>
+												<tr>
+													<td>厚度</td>
+													<td>普通轻薄（21mm-25mm）</td>
+												</tr>
+												<tr>
+													<td>摄像头像素</td>
+													<td>HD 720p高清摄像头</td>
+												</tr>
+												<tr>
+													<td>电池</td>
+													<td>6芯锂电池</td>
+												</tr>
+												<tr>
+													<td>读卡器描述</td>
+													<td>6合1读卡器（SD，SD-pro，MMC，MS，MS-pro，XD）</td>
+												</tr>
+												<tr>
+													<td>重量</td>
+													<td>2-2.5公斤</td>
+												</tr>
+												<tr>
+													<td>鼠标替代设备</td>
+													<td>触摸板</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="param_item">
+										<table class="param_table">
+											<thead>
+												<tr>
+													<th colspan="2" class="param_tit">规格参数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>是否苹果专用</td>
+													<td>否</td>
+												</tr>
+												<tr>
+													<td>版本</td>
+													<td>国行</td>
+												</tr>
+												<tr>
+													<td>硬盘转速</td>
+													<td>5400转</td>
+												</tr>
+												<tr>
+													<td>缓存</td>
+													<td>4M</td>
+												</tr>
+												<tr>
+													<td>色系</td>
+													<td>紫色系</td>
+												</tr>
+												<tr>
+													<td>规格特性</td>
+													<td>A8+14英寸Linux</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="J_magnetStop detail_section_item" style="">
+						<h2 class="detail_section_item_tit">详情</h2>
+						<div class="J_view_productDetail J_magnetBlock"
+							data-magnetbed=".J_magnetBed_view_productDetail" style="">
+							<div class="J_view_loading" style="display: none;">
+								<img class="v-middle">
+								<div class="h-center">
+									<span class="J_loadingIcon"></span>
+								</div>
+							</div>
+							<div class="J_badNetwork" style="display: none; padding: 20px;">
+								<a href="">看起来您的网络质量有点不好呢，点我刷新一下吧...</a>
+							</div>
+							<div class="J_loadingEnd" style="display: block;">
+								<div class="info">
+									<link rel="stylesheet" type="text/css"
+										href="http://st.icson.com/touch_v1/css/shop_detail.css">
+									<div class="detail_prt_wrap">
+										<!-- 商品简介 S -->
+										<section class="detail_box prt_desc">
+											<div class="hd">
+												<h2>商品简介</h2>
+												<p>简单明了地从这里开始了解产品</p>
+											</div>
+											<div class="bd">
+												<!--S 模块1：xintro_chipA 上图下参-->
+												<div class="detail_in_wrap">
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_ae270b69d48a18b64d9c1a1d2508cc1_52fdc620.jpg/300">
+													</div>
+													<table class="prt_data" cellpadding="0">
+
+														<tbody>
+															<tr>
+																<td class="prt_tit">商品名称</td>
+																<td>Lenovo 联想 Y485p-AEI 14英寸笔记本电脑</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">处理器</td>
+																<td>AMD Trinity APU A8-4500M 四核 1.9GHz Turbo Core
+																	2.8G</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">显卡</td>
+																<td>HD7640G+HD8790M</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">显存容量</td>
+																<td>2Gb</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">内存</td>
+																<td>单条4Gb DDR III 1600MHz</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">硬盘</td>
+																<td>500G</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">屏幕尺寸</td>
+																<td>14英寸</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">分辨率</td>
+																<td>宽屏16:9</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">其他功能</td>
+																<td>摄像头,蓝牙功能,其他,人脸识别,读卡器,视频输出,一键播放影音,扬声器,HDMI接口</td>
+															</tr>
+
+															<tr>
+																<td class="prt_tit">扬声器</td>
+																<td>JBL立体扬声器</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+												<!--E 模块1：xintro_chipA 上图下参-->
+												<!-- 特别提醒 无线模块17 S -->
+												<div class="prt_reminded">
+													<h2>特别提醒</h2>
+													<p>本品牌厂商提供维修服务，售后服务热线电话：400-990-8888，请您自拨打厂商售后服务电话预约售后服务。□*请勿轻信任何自称为厂家或者易迅的工作人员主动打给您的售后服务预约电话，谨防诈骗!遇此情形，您可拨打易迅客服电话：400-828-1878并按语音提示进行举报。
+													</p>
+													<p>
+														<span>安装详情：</span>请参照说明书
+													</p>
+													<p>
+														<span>质保服务：</span>主机保修一年(具体保修参照保修卡)
+													</p>
+													<p>
+														<span>官方客服电话：</span>400-990-8888
+													</p>
+													<p>
+														<span>官方售后网站：</span>http://www.lenovo.com.cn
+													</p>
+												</div>
+												<!-- 特别提醒 无线模块17 E -->
+											</div>
+										</section>
+										<!-- 商品简介 E -->
+										<!-- 商品特性 S -->
+										<section class="detail_box prt_feature">
+											<div class="hd">
+												<h2>商品特性</h2>
+												<p>产品描述仅供参考，具体请查看规格</p>
+											</div>
+											<div class="bd">
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_21c24442ebe6fa488c5a0aa06459b7b_52fdc7ad.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3>小编寄语</h3>
+													<p>“联想Y485P是一款助攻游戏盒性能的笔记本，拥有HD□7640G□+□HD□8790M□2Gb显存的双显卡，在游戏方面的表现是出类拔萃的。配备了JBL内置音箱游戏和影音体验极佳。无论是从USB接口的数量，有线网卡、vga接口、HDMI接口、多功能读卡器、还是拥有了内置DVD刻录机来看14寸全尺寸笔记本在接口方面也是相当奢侈的，对于游戏、工作所需连接大量外设时不会造成接口贫乏的窘境。友情提示：由于Y485P是单条4GB内存，所以想用双显卡交火的同学只需自己再加一条4G内存就能有双显卡选项。”</p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_17a1fa394579a653f6c7450a602234e_52fdc7cf.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>外观设计</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3>精湛工艺□简约时尚</h3>
+													<p>一体成型的外表面和键盘面，时尚"流光溢彩"的面板上增加了高光几何图案，质感强烈的同时又不失美观。不仅使笔记本更加时尚耀眼。而且更坚实耐用，散热更好。</p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_af4ec1aab16a21b7af36348dac72233_52fdc8e4.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>作为一款14寸的双核独显本，有足够的地方放置各种接口，而且这款本由于性能卓越，所以也不会在接口方面留下遗憾。Y485P右侧奢侈的分出了耳机插口和麦克风插口，一个USB3.0和一个USB2.0，两个USB口中间是一台DVD刻录机，最外侧则是电源入口。有同学觉得光驱现在已经不常用了，几乎已经到了可以取消的境地。小编认为作为一台游戏本注重的是性能，光驱可以取消但是光驱位不能取消，这话怎么理解呢？有同学购买了Y485P以后首先就是给它做了个手术拆除了光驱更换了光驱位硬盘架，把500G主硬盘装在光驱位上，主硬盘位更换固态硬盘挂系统，这样一个简单的"手术"整台电脑的效能瞬间提升了(关于拆机加硬盘涉及到了保修问题小编只是举个例子具体操作请同学们自行定夺)。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_addfb0e45b90fb31b7a491dd3e70105_52fdc906.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>左边则依次是：电脑锁、散热口、vga插口、有线网卡插口、HDMI插口、2个USB3.0。对于一台游戏本来说外设是非常重要的□Y485P□奢侈的拥有3个USB3.0和1个USB2.0插口，完全满足了多个外设同时接入。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_94500861b7b99bbc75ea0ece70ea8ba_52fdc91f.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>Y485P键盘手感不错，整体属于偏软的感觉，每个键较为突出，有足够的键盘弹性支撑，所以长时间打字也不会提高疲劳度。在细节方面发现每个键帽上的字母都在左上侧显得比较大方。Y485P□的快捷键主要都涵盖在F1-F12上，主要以fn和f系列的组合键完成操作。fn键的位置放在ctrl和windows键中间，并没有放在最左侧，大大的防止了误按。90mm*60mm的触控板使用起来非常惬意，带着笔记本出行经常会碰到不方便用鼠标的情况，此时操控舒适的触控板则显得尤为重要了。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_c63d3abd0212df190ac8fd8ae138381_52fdc93d.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>作为一款游戏本，除了性能以外试听也是非常重要的。Y485P为了给同学们在酣畅淋漓的游戏中带来强大的音效体验，配置了JBL内置音箱作为笔记本的音源。众所周知"世界专业顶级音响都是来自于美国"，用这句话概括现在美国音响在世界的影响力是毫不夸张的，JBL专业音响作为知名音响品牌和美国音响五大巨头之一，有着非常过硬的技术。搭配如此专业内置音箱的联想Y485P笔记本还是非常值得期待的。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_f44f525bca922df1274fae2c8ad52c4_52fdc951.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>散热设计</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_9102d47bbce0c273d362eb40f2fadc6_52fdc969.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_12c1b58e6f23ab9f5427cdcc5175759_52fdc98a.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>Y485P的散热控制设计的非常好，它的主要散热口设计在机身左侧有风扇强力排风。硬盘的位置则设计在键盘底下，这样的设计有利于硬盘发热的同时，也不会造成长时间使用手掌位置发烫的问题。底部也拥有3处散热口，来达到更好的散热效果。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_0aa886c0d2db7e90f1230c0a27fdf9d_52fdca7f.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>笔记本处于空载开机时间为5小时，温度在40度左右，作为笔记本不像台式机空间那么大40度左右已经属于不错的了,□温度显示为绿色完全符合发热要求。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_18b5c4edeea3716a97498ba093f5577_52fdca93.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>再说说游戏情况下的散热状况吧。小编打开了"使命召唤8"评测,□上图是游戏过程中切换到桌面的截图。从监测软件上能够看到温度明显的变化，CPU使用情况是53%、内存使用情况是84%，显卡从40度左右上升到了54度，硬盘依然保持在40度左右。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_433394b810dcf1b68b3ac696d31e661_52fdcaa5.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>看了空载和游戏情况下的的温度测试，我们可以看出Y485P的发热量实际并不是很大，那么我们再看看它的散热状况，小编把"使命召唤8"直接退出，从下面的时间曲线上能看到温度降低的速度，大概在1分钟左右从之前的50多度直接恢复到了空载的温度状况。可以看出Y485P的散热能力真是令人赞叹。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>性能</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_419e04c516d18f1edd52f359d902236_52fdcb14.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>Y458P配置了AMD□A8-4500M□APU□with□Radeon□HD□Graphics□四核速度□1.90□GHz□(100□MHz□x□19.0)处理器，内置ATI□Radeon□HD7640G显卡。当然作为一款游戏笔记本集成显卡是远远不够的，值得一提的是Y458P还配置了AMD□Radeon□HD8790M系列独立显卡，采用384个流处理器、2GB□GDDR5显存、带宽128bit和核心频率850MHz，并支持TressFX发丝技术，支持双显卡交火(需要加一条4G内存)。内存为4GB□DDR3□1600MHz□，这样一个豪华整容簇拥下的Y458P几乎玩转所有大型游戏。
+													</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3>世界上好的游戏开发商们纷纷基于AMD显示技术开发</h3>
+													<p>基于AMD显示平台的笔记本带你进入以假乱真的游戏世界！增加双通道内存后，支持AMD独有双显卡交火技术，内部HD7640G独显核心和外部HD8790M独立显卡可同时开启，性能可提升33%左右。体验流畅的大型3D游戏。
+													</p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_ced0e328be38b101da9edb6d85682c9_52fddd2e.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_82967682a6592955fb3b89bc82746b4_52fddcea.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3>加双通道内存，可以组成双显卡交火</h3>
+													<p>Y485P通过添加一条4G内存条，即可支持AMD独有双显卡交火技术，可让APU内部HD7640G独显核心和外部HD8790M独立显卡同时工作，游戏帧数飙升，画质更流畅！
+													</p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_02202d39efbf5c7523f1bc63b005933_52fdd418.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_bab3194b556eaac4acfafe386198947_52fdd231.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3>纯物理四核的A8，更多任务更高速度</h3>
+													<p>搭载的A8-4500M拥有真正四颗物理核心的处理器，四个核心可以同时处理应用！数量优势，四重分身应对海量应用。</p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_edfe5707952ecd1415b75a5c9ad3a3b_52fdd787.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_6e6e380e245240102132c35c75076d7_52fdd7a1.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3>AMD智能超频技术：</h3>
+													<p>A8-4500M主频最高可智能超频至2.8GHz，提升性能！低负载下，可智能降频，延长续航！</p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_fab9e9cd4737a1d339da7d584f555c7_52fdd850.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_67887b8d4681fe1f975c2384b022cd6_52fdde9e.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>小编用"快快游戏"安装了"极品飞车14"，在安装前使用检测报告经行硬件检测免得装了也玩不了。从顶部能量条显示本机使用这款游戏完全可以流畅运行。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_9874a937cc5fe3b3bb84d62a039786c_52fddeb3.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>为了显示真实性小编并没有给游戏截图，而是直接用相机对屏幕拍照所以画面并不如截屏来的那么清晰。进入"极品飞车14"的显示设置项，屏幕尺寸最大化□1366*768，高解析材质、动态模糊等等能开的都处于打开品质都调节到高。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_c5233df704647fc451a9b6ab3b9ef65_52fddecf.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>游戏经行过程中，无论是选择车辆，到过场动画还是正式比赛，无不流畅顺滑。从下面两张图可以看到赛车在高速驾驶的情况下两边的景物如同真实环境一样变得模糊起来。经测试Y485P玩"极品飞车14"在最高画质的情况下可以说轻松应对，完全无压力。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_b0f72ab25a096e5b789ff4fec84d023_52fddee8.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>射击游戏往往会得到大部分游戏爱好者的青睐，但是射击游戏对于计算机的要求会显得尤为的高，小编用Y485P安装了"使命召唤8：现代战争3"经行游戏测试。那这款游戏到底能否流畅的在Y485P上跑起来呢？我们依然用"快快游戏"的配置检测经行检测，结果如上又是现实无压力。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_f36f1fb4accb1ea18ec49d0ad422514_52fddf55.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>进入高级视频设置的选项，既然游戏配置测试显示是流畅那么小编就依然把所有效果都打开了，纹理分辨率地图分辨率那些都开到了极高。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_9a486f8c8286e47032f4b164f12f6ce_52fddf1c.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>全效果打开，游戏依然顺畅，唯一不同的就是画面效果好了不少。不管是狙击枪瞄准射击，还是使用步枪进行点射、扫射，都是顺畅无比。由此可见，Y485P对于这些大型游戏还是能够轻松应对的。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_f533760e529a7d20c1b32229e91ee6e_52fddf0a.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>试过游戏了接下来小编用一款大家都比较常用的软件做下小测试，同学们一看界面就应该知道小编用的是Photoshop□吧。打开PS新建画布尺寸设置成20000*20000像素，然后分辨率调到300dpi。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_06d2ea0111461ff3469b7571cce1c8d_52fddf77.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>先吧左下角调节成时间这一就可以看到记录的时间了。然后用渐变工具选择"彩虹色"从左上拉到右下（从右上到左下或者从下至上也是一样的），有同学问我然后呢？然后就等着呗！会有个进度条然后慢慢滴就满了，之后左下角时间的位置就会有刚才的渲染时间。测试结果是16.7秒，这个速度作为笔记本可以说是非常快了，供大家参考下小编测评过的笔记本完成这项测试的时间一般是在30秒左右，慢的也有5-60秒。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>续航</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_e65aa30318d6847232aa80375ba1c1e_52fddfab.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_d0507ba06246914f7839da2f5d4a448_52fddfc7.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>笔记本电脑的同学们比较关注的就是续航能力，当然作为一款游戏本性能第一，续航能力一定不能去与那些低功耗的超极本相比。不管怎么说我们经行测试一下，开始时间11：23分，工作状态：打开QQ、猎豹网页浏览器、以及腾讯视频播放电视剧，音量2格。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_217792df085960e3e2fc21197c8a943_52fddfd7.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>期间小编浏览了会网页，以及聊了下qq，视频不间断播放。一直到14:26分显示低电，作为一款性能为主的游戏本续航能力不能说很强，却也不错了。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>接口介绍</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_b82f35fdc8f3022ad970fcd29eae1e0_52fddff2.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>温馨提示</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>液晶显示屏幕□1.长时间不使用电脑时，可透过键盘上的功能键暂时仅将液晶显示屏幕电源关闭，除了节省电力外亦可延长屏幕寿命。□2.请勿用力盖上液晶显示屏幕屏幕上盖或是放置任何异物在键盘及显示屏幕之间，避免上盖玻璃因重压而导致内部组件损坏。□3.请勿用手指甲及尖锐的物品(硬物)碰触屏幕表面以免刮伤。□4.液晶显示屏幕表面会因静电而吸附灰尘，建议购买液晶显示屏幕专用擦拭布来清洁您的屏幕,请勿用手指拍除以免留下指纹，并请轻轻擦拭。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>电池□1.当无外接电源的情况下，倘若当时的工作状况暂时用不到PCMCIA插槽中的卡片，建议先将卡片移除以延长电池使用时间。□2.室温(20-30度)为电池最适宜之工作温度，温度过高或过低的操作环境将降低电池的使用时间。□3.建议平均三个月进行一次电池电力校正的动作。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>键盘□1.累积灰尘时，可用小毛刷来清洁缝隙，或是使用一般在清洁照相机镜头的高压喷气罐，将灰尘吹出，或使用掌上型吸尘器来清除键盘上的灰尘和碎屑。□2.清洁表面，可在软布上沾上少许清洁剂，在关机的情况下轻轻擦拭键盘表面。</p>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<p>硬盘□1.尽量在平稳的状况下使用，避免在容易晃动的地点操作计算机。□2.开关机过程是硬盘最脆弱的时候。此时硬盘轴承尚未转速尚未稳定，若产生震动，则容易造成坏轨。故建议关机后等待约十秒左右后再移动笔记本电脑。□3.平均每月执行一次磁盘重组及扫描，以增进磁盘存取效率。</p>
+												</div>
+												<!--S 无线模块3：-->
+											</div>
+										</section>
+										<!-- 商品特性 E -->
+										<!-- 精美图片 S -->
+										<section class="detail_box prt_reminded">
+											<div class="hd">
+												<h2>精美图片</h2>
+											</div>
+											<div class="bd">
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>精美图片</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_821d9c7134397eccb21b7180c6469bd_52fde05b.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_854eec4600ebb48a9d375434be8c57a_52fde064.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_dd43f8b7ce51c4c72ebd155c64a0ee5_52fde06d.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_d400ecb3a5b9c6c2fc0cd295ae97c67_52fde077.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_af0546911c11e188526f36e94a750f1_52fde084.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_bb8e76f879cf7f85ad169e283449857_52fde090.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_5d23e83dfe32baa0444261631427337_52fde099.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块2：-->
+												<span class="more_features"><i>真人秀</i></span>
+												<!--E 无线模块2：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_acc971abce01b2070ce89225928685f_52fde0a4.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_41bfff713fd924fc1e2402821b4bfe5_52fde0bd.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p></p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_e9168f8bf91e71f8f5ec4c481b6692c_52fde0c4.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+											</div>
+										</section>
+										<!-- 精美图片 E -->
+										<!-- 相关说明 S -->
+										<section class="detail_box prt_reminded">
+											<div class="hd">
+												<h2>相关说明</h2>
+											</div>
+											<div class="bd">
+												<!--S 无线模块3：-->
+												<div class="detail_in_wrap">
+													<h3></h3>
+													<p>联想（HKSE:□992，ADR:□LNVGY）是一家营业额达340亿美元的个人科技产品公司，是全球第一大个人电脑厂商之一，也是PC+产品领域新晋领导厂商。□联想客户遍布全球160多个国家，凭借创新的产品、高效的供应链和强大的战略执行，联想专注于为全球用户提供卓越的个人电脑和移动互联网产品。□集团由联想及前IBM个人电脑事业部所组成，在全球开发、制造和销售可靠、优质、安全易用的科技产品及优质专业的服务，产品线包含Think品牌商用个人电脑、Idea品牌的消费个人电脑、服务器、工作站以及包括平板电脑和智能手机等的一系列移动互联网终端。集团在日本大和、中国北京、上海、深圳及美国北卡罗莱纳州罗利均设有重点研发中心。</p>
+													<div class="img_wrap">
+														<img
+															src="http://pwg.gtimg.cn/yixun_struct/264379472/0_447ddabb6be33f18d014581ae2af43f_52fde180.jpg/300">
+													</div>
+												</div>
+												<!--S 无线模块3：-->
+											</div>
+										</section>
+										<!-- 相关说明 E -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="J_magnetStop detail_section_item" style="">
+						<h2 class="detail_section_item_tit">评论</h2>
+						<div class="J_view_productComment J_magnetBlock"
+							data-magnetbed=".J_magnetBed_view_productComment"
+							data-magnetkeep="temp" style="">
+							<div class="J_view_loading" style="display: none;">
+								<img class="v-middle">
+								<div class="h-center">
+									<span class="J_loadingIcon"></span>
+								</div>
+							</div>
+							<div class="J_badNetwork" style="display: none; padding: 20px;">
+								<a href="">看起来您的网络质量有点不好呢，点我刷新一下吧...</a>
+							</div>
+							<div class="J_loadingEnd" style="display: block;">
+								<div class="comment">
+									<div class="comment_top">
+										<span class="comment_grade"> 用户评分 <span
+											class="comment_grade_score"><span>4.5</span>分</span> <span
+											class="comment_grade_tag">非常满意</span>
+										</span> <span class="comment_total">24条评论</span>
+									</div>
+									<div class="comment_list">
+										<div class="comment_item">
+											<p>电脑不错，价格便宜的小Y了，玩游戏杠杠的，像英雄联盟，DOTA,CF,NDF,等网游能很好的运行，单机游戏虐杀原型，暗黑血统等仍能完美运行，总体来说机子是靠谱的AMD的CPU还不错，特价买的，商品评价就四个字“物有所值”，易迅送货也很快，期待易迅以后售后的表现。</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">29***07</span> <span
+													class="comment_date">2014-02-01</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>笔记本非常好 很喜欢 价格很合理</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">17***38</span> <span
+													class="comment_date">2014-02-26</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>相信联想 相信小易</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">兔***11</span> <span
+													class="comment_date">2014-02-26</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>买了两台，其中一台用几天就坏了，不良率50%25</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">63***11</span> <span
+													class="comment_date">2014-02-23</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>送货速度快，价格便宜，东西正品，力挺易迅</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">91***88</span> <span
+													class="comment_date">2014-02-23</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>还可以，帮表弟买的</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">41***22</span> <span
+													class="comment_date">2014-02-22</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>还在倒腾，装系统摸索中</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">32***24</span> <span
+													class="comment_date">2014-02-16</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>买好一礼拜就降100元啊！！真讨厌</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">39***63</span> <span
+													class="comment_date">2014-02-13</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>3899购的，装了WIN7 64位系统，就是不知道双显卡怎么交火！</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">13***57</span> <span
+													class="comment_date">2014-02-13</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>太失望了，易迅居然用二手货当新货卖！笔记本是2014年2月12日买的，装好联想软件后居然显示2013年8月12日就保修开始了，新电脑上还有好多指纹，金属面板最容易留证据了，你们太差劲了，一直很信任你们，这次你们太让我失望了，最后一次买你们东西了！</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">ze***26</span> <span
+													class="comment_date">2014-02-12</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>此计甚好!!!!!!!!!!</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">cklx</span> <span
+													class="comment_date">2014-02-12</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>电脑还是不错的，价格也合适。就是连电脑包和鼠标也不送，太小气了。是过节的原因吗</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">12***40</span> <span
+													class="comment_date">2014-02-11</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>一次性买了两台 不错的 就是官方的驱动不是很好 还有就是用的顺丰快递也是蛮慢的</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">29***07</span> <span
+													class="comment_date">2014-02-10</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>显示器右边AB壳都合不严，有很大的间隙</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">10***59</span> <span
+													class="comment_date">2014-02-10</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>机器还行无瑕疵，快递给力</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">36***88</span> <span
+													class="comment_date">2014-02-03</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>送货速度快，关键是电脑确实不错 配置 游戏 音效 看视频体验都可以在4000以内的机子买到小Y应该是很好了</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">56***80</span> <span
+													class="comment_date">2014-01-30</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>点击[] 查看这张图片。[访问验证码是：553247请妥善保管] 为什么有两个F2键 而且还没有F3键。。。
+												很满意易迅的发货速度和服务质量 但是联想犯的这种低级错误实在让人不舒服</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">46***00</span> <span
+													class="comment_date">2014-01-27</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>不错～性价比高～</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">63***50</span> <span
+													class="comment_date">2014-01-26</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>不是说好前十个好评 有电脑包送的吗？？？包呢？？？</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">42***53</span> <span
+													class="comment_date">2014-01-24</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>送货快，前后4小时</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">Lo***19</span> <span
+													class="comment_date">2014-01-20</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>发货好慢。。</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">14***70</span> <span
+													class="comment_date">2014-01-20</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>速度没说的，前后十个小时。</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">93***20</span> <span
+													class="comment_date">2014-01-18</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>帮朋友买的，还可以，正在做系统中</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">51***53</span> <span
+													class="comment_date">2014-01-18</span>
+											</div>
+										</div>
+										<div class="comment_item">
+											<p>非常不错。。。价格便宜</p>
+											<div class="comment_item_ft">
+												<span class="comment_user">71***24</span> <span
+													class="comment_date">2014-01-09</span>
+											</div>
+										</div>
+										<textarea style="display: none" class="J_2stTemplate"
+											main-thread="true" data-insert-position="before"
+											data-remove="false">     {%      var comment=commentList[commentList.length-1];      if(comment!=null &amp;&amp; comment.length){      for(var i=0;i&lt;comment.length;i++){      %}        &lt;div class="comment_item"&gt;         &lt;p&gt;{%=comment[i].content%}&lt;/p&gt;         &lt;div class="comment_item_ft"&gt;          &lt;span class="comment_user"&gt;{%=comment[i].user_name%}&lt;/span&gt;          &lt;span class="comment_date"&gt;{%=$T.formatDate(comment[i].create_time*1000,"yyyy-MM-dd")%}&lt;/span&gt;         &lt;/div&gt;        &lt;/div&gt;     {%       }     }      %}     </textarea>
+									</div>
+								</div>
+								<div class="J_commentOver comment_loaded" style="">已显示全部评论</div>
+							</div>
+							<div class="comment_loading J_loadingMore"
+								style="opacity: 1; display: none;">
+								<span class="J_loadingIcon" style="display: none;"></span><span
+									class="J_loadingText">下拉刷新更多</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="detail_section J_magnetBed_view_productModel"></div>
+
+
+				<div class="detail_section J_magnetBed_view_productDetail"></div>
+
+				<div
+					class="detail_section J_scrollY J_magnetBed_view_productComment"
+					style="-webkit-transform: translateY(0px); visibility: hidden;">
+
+				</div>
+			</div>
+		</div>
+		<a href="javascript:void(0);" id="J_goTop"
+			class="mod_backtop mod_backtop_active J_bottomBtn_goTop J_ytag"
+			ytag="09999" style="display: none"></a> <a href="javascript:void(0);"
+			class="mod_backprev J_backUrl"></a>
+
+	</div>
+	<div class="J_ScanOrientation"></div>
+	<div id="J_pleaseWait">正在加载...</div>
+</body>
+</html>
